@@ -33,22 +33,21 @@ namespace LuckySpin.Controllers
 
         public IActionResult SpinIt(int luck)
         {
-            int a = random.Next(1, 10);
-            int b = random.Next(1, 10);
-            int c = random.Next(1, 10);
-            Spin mySpin = new Spin(); 
-            mySpin.Luck = luck;
+            //Load up a Spin object with data
+            Spin spin = new Spin();
+            spin.Luck = luck;
+            spin.A = random.Next(1, 10);
+            spin.B = random.Next(1, 10);
+            spin.C = random.Next(1, 10);
 
-            if (a == mySpin.Luck || b == mySpin.Luck || c == mySpin.Luck)
-                mySpin.Display = "block";
+            // Test to see if a winner
+            if (spin.A == spin.Luck || spin.B == spin.Luck || spin.C == spin.Luck)
+                spin.Display = "block";
             else
-                mySpin.Display = "none";
+                spin.Display = "none";
 
-            mySpin.A = a;
-            mySpin.B = b;
-            mySpin.C = c;
-
-            return View(mySpin);
+            //Send the View a Spin
+            return View(spin);
         }
     }
 }
