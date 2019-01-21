@@ -22,7 +22,7 @@ namespace LuckySpin.Controllers
         [HttpPost]
         public IActionResult Index(int num)
         {
-            return RedirectToAction("SpinIt", new { luck = 3});
+            return RedirectToAction("SpinIt", new { luck = 3 });
         }
 
         /***
