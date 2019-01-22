@@ -1,5 +1,8 @@
 ﻿@model LuckySpin.Models.Spin
 @inject LuckySpin.Models.TextTransformService Transform
+@{
+    Layout = "_Layout";
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +13,7 @@
     <button onclick='history.go(0)'>Spin</button>
     <div>@Model.A</div><div>@Model.B</div><div>@Model.C</div>
     <h1> Lucky @Transform.numberToText(Model.Luck) </h1>
+    <h2 style="display:@Model.Display"> @ViewBag.Name  You WIN!!  </h2>
     <img src="/Images/LuckySpinCoins.jpg" class="animated bounce" alt="Coins" style="display:@Model.Display" />
 </body>
 </html>

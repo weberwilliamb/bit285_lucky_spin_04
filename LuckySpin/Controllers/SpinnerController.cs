@@ -16,13 +16,15 @@ namespace LuckySpin.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-                return View();
+            return View();
         }
 
         [HttpPost]
-        public IActionResult Index(int num)
+        public IActionResult Index(Player user)
         {
-            return RedirectToAction("SpinIt", new { luck = 3 });
+
+            return RedirectToAction("SpinIt", new { luck = user.Num, name = user.Name });
+
         }
 
         /***
@@ -31,8 +33,9 @@ namespace LuckySpin.Controllers
                
         Random random = new Random() ; 
 
-        public IActionResult SpinIt(int luck)
+        public IActionResult SpinIt(int luck, string name)
         {
+            ViewBag.Name = name;
             //Load up a Spin object with data
             Spin spin = new Spin();
             spin.Luck = luck;
